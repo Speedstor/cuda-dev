@@ -13,6 +13,7 @@ CUDA_ROOT_DIR=/usr/local/cuda-12.8
 CC=g++
 CC_FLAGS=
 CC_LIBS=
+CC_INC_DIR= -I./include
 
 ###############################################################################
 
@@ -26,7 +27,7 @@ NVVV_LIBS=
 # CUDA library directory:
 CUDA_LIB_DIR= -L$(CUDA_ROOT_DIR)/lib64
 # CUDA include directory:
-CUDA_INC_DIR= -I$(CUDA_ROOT_DIR)/include
+CUDA_INC_DIR= -I$(CUDA_ROOT_DIR)/include -I./include
 # CUDA linking libraries:
 CUDA_LINK_LIBS= -lcudart
 
@@ -51,7 +52,7 @@ OBJ_DIR = build
 EXE = cudaDev
 
 # Object files:
-OBJS=src/kernels/matmul/matmul_dev.o src/common/cuda_helper.o src/main.o 
+OBJS=src/kernels/matmul/matmul_cuda.o src/common/cuda_helper.o src/kernels/my_kernels.o src/main.o 
 
 ###############################################################################
 
@@ -63,11 +64,11 @@ $(EXE) : $(OBJS) | $(BUILDDIR)
 
 # Compile main.cpp file to object files
 %.o: %.cpp | $(OBJ_DIR)
-	$(CC) $(CC_FLAGS) -c $^ -o $(OBJ_DIR)/$(notdir $@)
+	$(CC) $(CC_FLAGS) -c $^ -o $(OBJ_DIR)/$(notdir $@) $(CC_INC_DIR)
 
 # Compile C++ source files to object files
 %.o: %.cu | $(OBJ_DIR)
-	$(NVCC) $(NVCC_FLAGS) -c $^ -o $(OBJ_DIR)/$(notdir $@) $(NVCC_LIBS)
+	$(NVCC) $(NVCC_FLAGS) -c $^ -o $(OBJ_DIR)/$(notdir $@) $(NVCC_LIBS) $(CUDA_INC_DIR)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
