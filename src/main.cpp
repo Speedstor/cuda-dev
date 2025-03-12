@@ -14,5 +14,5 @@ int main() {
     std::cout << myKernels.report() << std::endl;
 
     return exitCuda();
-
 }
+
