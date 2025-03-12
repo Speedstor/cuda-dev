@@ -1,7 +1,10 @@
 # cuda-dev
----
 
 My tinkering with CUDA. Getting familiar with parallel programming.
+
+![image](https://github.com/user-attachments/assets/1b1e4671-6ae4-4556-a7f0-008776f41161)
+
+---
 
 ## Benchmarks
 | optimization | ..      |
@@ -11,7 +14,7 @@ My tinkering with CUDA. Getting familiar with parallel programming.
 
 
 ## Usage
-### :one: 1.Naive Matmul
+### :one: Naive Matmul
 ```cpp
 MatmulKernels myKernels = MatmulKernels();
 
