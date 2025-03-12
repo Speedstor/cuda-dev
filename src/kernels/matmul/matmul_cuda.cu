@@ -1,6 +1,6 @@
 #include <matmul_cuda.cuh>
 
-__global__ void cuda_matmal_naive(float *A, float *B, float *C, int m, int k, int n) {
+__global__ void cuda_matmal_naive(float *A, float *B, float *C, int n, int k, int m) {
     int row = blockIdx.y * blockDim.y + threadIdx.y;
     int col = blockIdx.x * blockDim.x + threadIdx.x;
 
@@ -9,6 +9,6 @@ __global__ void cuda_matmal_naive(float *A, float *B, float *C, int m, int k, in
         for (int l = 0; l < k; l++) {
             sum += A[row * k + l] * B[l * n + col];
         }
-        C[row * n + col] = sum;
+        C[row * n + col] += sum;
     }
 }

@@ -6,9 +6,10 @@
 #include <iostream>
 
 int main() {
-    MyKernels myKernels = MyKernels();
+    MatmulKernels myKernels = MatmulKernels();
 
-    myKernels.eval(MyKernels::CUDA_MATMUL_NAIVE);
+    myKernels.eval(MatmulKernels::CUDA_MATMUL_NAIVE, true);
+    myKernels.eval(MatmulKernels::CUDA_MATMUL_NAIVE);
 
     std::cout << myKernels.report() << std::endl;
 
