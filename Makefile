@@ -21,7 +21,7 @@ CC_INC_DIR= -I./include
 
 # NVCC compiler options:
 NVCC=nvcc
-NVCC_FLAGS=-Wno-deprecated-gpu-targets
+NVCC_FLAGS= -Wno-deprecated-gpu-targets -O0
 NVVV_LIBS=
 
 # CUDA library directory:
