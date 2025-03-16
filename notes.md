@@ -1,0 +1,1 @@
+- to test out the code bfore going to debugger, list out difference for  M, K, N = 2048, 3, 2048
